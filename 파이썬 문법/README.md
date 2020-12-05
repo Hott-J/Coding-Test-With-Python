@@ -292,7 +292,16 @@ result=map(lambda a,b:a+b,list1,list2)
   - 반복되는 형태의 데이터를 처리
   - 순열과 조합 라이브러리가 포함
 ```python
+from itertools import permutations
+from itertools import combinations
+from itertools import product
+from itertools import combinations_with_replacement
 
+data=['a','b','c']
+result=list(permutations(data,3) # 모든 순열 구하기
+result1=list(combinations(data,2) # 2개를 뽑는 모든 조합 구하기
+result2=list(product(data,repeat=2)) # 2개를 뽀는 모든 순열 구하기 (중복 허용)
+result3=list(combinations_with_replacement(data,2)) # 2개를 뽑는 모든 조합 구하기 (중복 허용)
 ```
 - heapq
   - 우선순위 큐
@@ -301,5 +310,19 @@ result=map(lambda a,b:a+b,list1,list2)
   - 이진 탐색
 - collections
   - 덱, 카운터등의 유용한 자료구조 포함
+  - Counter는 등장 횟수를 세는 기능을 제공
+    - 리스트와 같은 반복 가능한 객체가 주어졌을 때 내부의 원소가 몇 번씩 등장했는지 알려준다.
+```python
+from collections import Counter
+
+counter=Counter(['r','b','r','g','b','b'])
+print(counter['b']) #3
+print(dict(counter)) # {'r':2,'b':3,'g':1} # 사전 자료형으로 반환
+```
 - math
   - 팩토리얼, 제곱근, 최대공약수, 삼각함수
+```python
+import math
+
+math.gcd(21,14) # 최대 공약수
+``` 
