@@ -281,6 +281,39 @@ result=map(lambda a,b:a+b,list1,list2)
 # [7,9,11,13,15]
 ```
 
+### map 함수
+- map(변환 함수, 순회 가능한 데이터)
+```python
+users = [{'mail': 'gregorythomas@gmail.com', 'name': 'Brett Holland', 'sex': 'M'},
+  {'mail': 'hintoncynthia@hotmail.com', 'name': 'Madison Martinez', 'sex': 'F'},
+  {'mail': 'wwagner@gmail.com', 'name': 'Michael Jenkins', 'sex': 'M'},
+  {'mail': 'daniel79@gmail.com', 'name': 'Karen Rodriguez', 'sex': 'F'},
+  {'mail': 'ujackson@gmail.com', 'name': 'Amber Rhodes', 'sex': 'F'}]
+ 
+def conver_to_name(user):
+    first, last = user["name"].split()
+    return {"first": first, "last": last}
+
+for name in map(conver_to_name, users):
+     print(name)
+
+{'first': 'Brett', 'last': 'Holland'}
+{'first': 'Madison', 'last': 'Martinez'}
+{'first': 'Michael', 'last': 'Jenkins'}
+{'first': 'Karen', 'last': 'Rodriguez'}
+{'first': 'Amber', 'last': 'Rhodes'}
+
+for mail in map(lambda u: "남" if u["sex"] == "M" else "여", users):
+     print(mail)
+
+남
+여
+남
+여
+여
+```
+- map 의 반환값은 map 객체이다. list(), tuple() 과 같은 내장함수로 변환가능하다.
+
 ## 실전에서 유용한 표준 라이브러리
 - 내장 함수
   - sum()
