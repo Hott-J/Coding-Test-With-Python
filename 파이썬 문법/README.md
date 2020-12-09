@@ -283,6 +283,7 @@ result=map(lambda a,b:a+b,list1,list2)
 
 ### map 함수
 - map(변환 함수, 순회 가능한 데이터)
+  - 순회 가능한 데이터의 객체 하나씩 가져와서, 변환 함수 혹은 람다 함수에 적용하여 새로운 iterable 객체를 생성
 ```python
 users = [{'mail': 'gregorythomas@gmail.com', 'name': 'Brett Holland', 'sex': 'M'},
   {'mail': 'hintoncynthia@hotmail.com', 'name': 'Madison Martinez', 'sex': 'F'},
