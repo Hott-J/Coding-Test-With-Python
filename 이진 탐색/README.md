@@ -19,7 +19,8 @@
   - 3단계를 거치면 4개가량의 데이터만 남는다.
 - 다시 말해 이진 탐색은 탐색 범위를 절반씩 줄이며, 시간 복잡도는 O(logN)을 보장
 
-```python
+```
+python
 # 재귀
 
 def binary_search(array, target, start, end):
@@ -101,7 +102,8 @@ print(count_by_range(a,-1,3))
 
 ![444](https://user-images.githubusercontent.com/47052106/105417719-5add8100-5c7f-11eb-8696-e0e9badebdde.JPG)
 
-```python
+```
+python
 # 내 코드
 from bisect import bisect_left, bisect_right
 
@@ -152,7 +154,8 @@ while(start<=end):
 
 ![1111](https://user-images.githubusercontent.com/47052106/105418859-25d22e00-5c81-11eb-9078-dbacb34020ea.JPG)
 
-```python
+```
+python
 from bisect import bisect_left, bisect_right
 
 def count_by_range(a, left_value, right_value):
