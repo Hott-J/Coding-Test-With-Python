@@ -146,6 +146,28 @@ while(start<=end):
     start = mid +1
 ```
 
+![문제2](https://user-images.githubusercontent.com/47052106/105418357-55346b00-5c80-11eb-9503-c57bddc6f888.JPG)
+
+![조건22](https://user-images.githubusercontent.com/47052106/105418356-54033e00-5c80-11eb-8bf2-899aafe18a74.JPG)
+
+![1111](https://user-images.githubusercontent.com/47052106/105418859-25d22e00-5c81-11eb-9078-dbacb34020ea.JPG)
+
+```python
+from bisect import bisect_left, bisect_right
+
+def count_by_range(a, left_value, right_value):
+  right_index = bisect_right(a, right_value)
+  left_index = bisect_left(a, left_value)
+  return right_index - left_index
+
+n,x=list(map(int,input().split()))
+a=list(map(int,input().split()))
+if x not in a:
+  print("-1")
+else:
+  print(count_by_range(a,x,x))
+```
+
 
 
 
