@@ -60,8 +60,7 @@ def binary_search(array,target,start,end):
 
 ![bisect](https://user-images.githubusercontent.com/47052106/105399507-10500a80-5c67-11eb-986f-3856e891f5b4.JPG)
 
-```
-python
+```python
 from bisect import bisect_left, bisect_right
 
 # 값이 [left_value, right_value] 인 데이터의 개수를 반환하는 함수
@@ -101,8 +100,7 @@ print(count_by_range(a,-1,3))
 
 ![444](https://user-images.githubusercontent.com/47052106/105417719-5add8100-5c7f-11eb-8696-e0e9badebdde.JPG)
 
-```
-python
+```python
 # 내 코드
 from bisect import bisect_left, bisect_right
 
@@ -153,8 +151,7 @@ while(start<=end):
 
 ![1111](https://user-images.githubusercontent.com/47052106/105418859-25d22e00-5c81-11eb-9078-dbacb34020ea.JPG)
 
-```
-python
+```python
 from bisect import bisect_left, bisect_right
 
 def count_by_range(a, left_value, right_value):
