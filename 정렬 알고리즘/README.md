@@ -1,4 +1,4 @@
-# :정렬 알고리즘
+# :book: 정렬 알고리즘
 
 ## 정렬
 - 정렬이란 데이터를 특정한 기준에 따라 순서대로 나열하는 것을 말한다.
@@ -174,7 +174,46 @@ for i in range(len(count)): # 리스트에 기록된 정렬 정보 확인
 ### 정렬 알고리즘 비교하기
 
 ![알고비교](https://user-images.githubusercontent.com/47052106/105369207-ad01b080-5c45-11eb-9a8d-7d8887d44994.JPG)
-  
-  
-  
 
+## 문제
+
+### 두 배열의 원소 교체
+
+- 동빈이는 두 개의 배열 A와 B를 가지고 있습니다. 두 배열은 N개의 원소로 구성되어 있으며, 배열의 원소는 모두 자연수입니다.
+- 동빈이는 최대 K번의 바꿔치기 연산을 수행할 수 있는데, 바꿔치기 연산이란 배열 A에 있는 원소 하나와 배열 B에 있는 원소 하나를 골라서 두 원소를 서로 바꾸는 것을 말합니다.
+- 동빈이의 최종 목표는 배열 A의 모든 원소의 합이 최대가 되도록 하는 것이며, 여러분은 동빈이를 도와야 합니다.
+- N, K 그리고 배열 A와 B의 정보가 주어졌을 때, 최대 K번의 바꿔치기 연산을 수행하여 만들 수 있는 배열 A의 모든 원소의 합의 최댓값을 출력하는 프로그램을 작성하세요
+
+![설명](https://user-images.githubusercontent.com/47052106/105370085-8c862600-5c46-11eb-9769-072bb593a145.JPG)
+
+```python
+# 내 풀이
+n,k=list(map(int,input().split()))
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+a=sorted(a)
+b=sorted(b,reverse=True)
+cnt=0
+for i in range(n):
+  if a[i]<b[i]:
+    a[i]=b[i]
+    b[i]=a[i]
+    cnt+=1
+    if cnt==k:
+      break
+print(sum(map(int,a)))
+
+# 모범 답안
+n,k=list(map(int,input().split()))
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+a.sort()
+b.sort(reverse=True)
+
+for i in range(k):
+  if a[i]<b[i]:
+    a[i],b[i]=b[i],a[i]
+  else:
+    break
+print(sum(a))
+```
