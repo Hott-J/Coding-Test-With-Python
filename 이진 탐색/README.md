@@ -19,8 +19,7 @@
   - 3단계를 거치면 4개가량의 데이터만 남는다.
 - 다시 말해 이진 탐색은 탐색 범위를 절반씩 줄이며, 시간 복잡도는 O(logN)을 보장
 
-```
-python
+```python
 # 재귀
 
 def binary_search(array, target, start, end):
