@@ -111,5 +111,162 @@ for i in range(3,n+1):
 
 ![조건](https://user-images.githubusercontent.com/47052106/105513912-400a1b80-5d16-11eb-83b4-d760b010136e.JPG)
 
+- 풀이
 
+![111](https://user-images.githubusercontent.com/47052106/105533131-13163280-5d2f-11eb-8ec7-b2ddb6281ea6.JPG)
 
+![222](https://user-images.githubusercontent.com/47052106/105533139-14475f80-5d2f-11eb-8093-1f352a0ebda6.JPG)
+
+![33](https://user-images.githubusercontent.com/47052106/105533142-14dff600-5d2f-11eb-8efc-0f09d9e3e9c9.JPG)
+
+![44](https://user-images.githubusercontent.com/47052106/105533144-14dff600-5d2f-11eb-8ba2-f1af624dd689.JPG)
+
+```python
+n=int(input())
+array=list(map(int,input().split()))
+
+# 앞서 계산된 결과를 저장하기 위한 DP 테이블 초기화
+d = [0] *100
+
+# 보텀업
+d[0]=array[0]
+d[1]=max(array[0],array[1])
+for i in range(2,n):
+  d[i]=max(d[i-1],d[i-2]+array[i])
+
+print(d[n-1])
+```
+
+### 1로 만들기
+
+![1로](https://user-images.githubusercontent.com/47052106/105536494-cc770700-5d33-11eb-9f9b-62c73d185636.JPG)
+
+![111](https://user-images.githubusercontent.com/47052106/105537105-c170a680-5d34-11eb-9b60-671a48e6f17f.JPG)
+
+![222](https://user-images.githubusercontent.com/47052106/105537107-c2a1d380-5d34-11eb-8dc4-b4f528e02960.JPG)
+
+```python
+n=int(input())
+
+d = [0] * 30001
+
+# 보텀업
+
+for i in range(2,n+1):
+  d[i]=1+d[i-1]
+  if i%5==0:
+    d[i]=min(d[i],d[i//5]+1)
+  if i%3==0:
+    d[i]=min(d[i],d[i//3]+1)
+  if i%2==0:
+    d[i]=min(d[i],d[i//2]+1)
+print(d[n])
+```
+
+### 효율적인 화폐 구성
+
+![효](https://user-images.githubusercontent.com/47052106/105540473-989ee000-5d39-11eb-9ee3-4cb00ebc24b8.JPG)
+
+![조](https://user-images.githubusercontent.com/47052106/105540638-de5ba880-5d39-11eb-8fee-a2b486d22a38.JPG)
+
+![11](https://user-images.githubusercontent.com/47052106/105540643-df8cd580-5d39-11eb-8ca3-8de25fd020bf.JPG)
+
+![2](https://user-images.githubusercontent.com/47052106/105540981-7063b100-5d3a-11eb-8920-4d97c9990271.JPG)
+
+![3](https://user-images.githubusercontent.com/47052106/105540984-70fc4780-5d3a-11eb-8c5d-585ededd49ba.JPG)
+
+![4](https://user-images.githubusercontent.com/47052106/105540986-7194de00-5d3a-11eb-96b0-9beb13cb1d7a.JPG)
+
+![5](https://user-images.githubusercontent.com/47052106/105540989-722d7480-5d3a-11eb-82c5-d6e1139606ae.JPG)
+
+```python
+n,m=map(int,input().split())
+
+array=[]
+for i in range(n):
+  array.append(int(input()))
+
+# 한번 계산된 결과를 저장하기 위한 DP 테이블 초기화
+d=[10001]*(m+1)
+
+# 보텀업
+d[0]=0
+for i in range(n):
+  for j in range(array[i],m+1):
+    if d[j-array[i]]!=10001: # (i-k)원을 만드는 방법이 존재하는 경우
+      d[j]=min(d[j],d[j-array[i]]+1)
+
+if d[m]==10001:
+  print(-1)
+else:
+  print(d[m])
+```
+
+### 금광
+
+![금광](https://user-images.githubusercontent.com/47052106/105543304-fd0f6e80-5d3c-11eb-8674-f1c4ada98f1d.JPG)
+
+![조건](https://user-images.githubusercontent.com/47052106/105547442-d7d12f00-5d41-11eb-9da3-efc4db77740b.JPG)
+
+![1](https://user-images.githubusercontent.com/47052106/105547445-d869c580-5d41-11eb-8907-0388dd2b16d1.JPG)
+
+![2](https://user-images.githubusercontent.com/47052106/105547490-ea4b6880-5d41-11eb-97e3-19b3578e20da.JPG)
+
+```python
+for tc in range(int(input())):
+  n,m=list(map(int,input().split()))
+  array=list(map(int,input().split()))
+
+  dp=[]
+  index=0
+  for i in range(n):
+    dp.append(array[index:index+m])
+    index+=m
+
+  for j in range(1,m):
+    for i in range(n):
+      if i==0:
+        dp[i][j]=max(dp[i][j-1]+dp[i][j],dp[i][j]+dp[i+1][j-1])
+      elif i==n-1:
+        dp[i][j]=max(dp[i][j]+dp[i-1][j-1],dp[i][j]+dp[i][j-1])
+      else:
+        dp[i][j]=max(dp[i][j]+dp[i-1][j-1],dp[i][j-1]+dp[i][j],dp[i][j]+dp[i+1][j-1])
+
+  res=0
+  for i in range(n):
+    res=max(res,dp[i][m-1])
+  print(res)
+  ```
+
+### 병사 배치하기
+
+![병사](https://user-images.githubusercontent.com/47052106/105548111-9725e580-5d42-11eb-8a49-b81878f7f2a5.JPG)
+
+![병'](https://user-images.githubusercontent.com/47052106/105548116-98571280-5d42-11eb-8a92-9f1db044211c.JPG)
+
+![조건](https://user-images.githubusercontent.com/47052106/105548118-98571280-5d42-11eb-94e4-3d43ba355062.JPG)
+
+![11](https://user-images.githubusercontent.com/47052106/105551644-47e1b400-5d46-11eb-98fb-9b9ee30adf1c.JPG)
+
+![22](https://user-images.githubusercontent.com/47052106/105551649-4912e100-5d46-11eb-97bc-cc59b9a43120.JPG)
+
+![33](https://user-images.githubusercontent.com/47052106/105551654-4912e100-5d46-11eb-8630-60c07ffdfd1a.JPG)
+
+![44](https://user-images.githubusercontent.com/47052106/105551657-49ab7780-5d46-11eb-8159-b8cabee4a1e3.JPG)
+
+```python
+n=int(input())
+array=list(map(int,input().split()))
+# 순서를 뒤집어 최장 증가 부분 수열 문제로 변환
+array.reverse()
+
+dp=[1]*n
+
+# LIS 알고리즘 수행
+for i in range(1,n):
+  for j in range(0,i):
+    if array[j]<array[i]:
+      dp[i]=max(dp[i],dp[j]+1)
+
+print(n-max(dp))
+```
