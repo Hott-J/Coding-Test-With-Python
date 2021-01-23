@@ -151,3 +151,48 @@ def heapsort(iterable):
 result=heapsort([1,3,5,7,9,2,4,6,8,0])
 print(result)
 ```
+
+### 최대 힙
+
+```python
+import heapq
+
+# 내림차순 힙 정렬
+def heapsort(iterable):
+  h=[]
+  result=[]
+  # 모든 원소를 차례대로 힙에 삽입
+  for value in iterable:
+    heapq.heappush(h,-value)
+  # 힙에 삽입된 모든 원소를 차례대로 꺼내어 담기
+  for i in range(len(h)):
+    result.append(-heapq.heappop(h))
+  return result
+
+result=heapsort([1,3,5,7,9,2,4,6,8,0])
+print(result)
+```
+
+- 단계마다 방문하지 않은 노드 중에서 최단 거리가 가장 짧은 노드를 선택하기 위해 힙 자료구조를 이용
+- 다익스트라 알고리즘이 동작하는 기본 원리는 동일
+  - 현재 가장 가까운 노드를 저장해 놓기 위해서 힙 자료구조를 추가적으로 이용한다는 점이 다름
+  - 현재의 최단 거리가 가장 짧은 노드를 선택해야 하므로 최소 힙을 사용
+  
+![다익우선](https://user-images.githubusercontent.com/47052106/105615486-74640180-5e14-11eb-97c0-b75fd093d10c.JPG)
+
+![1](https://user-images.githubusercontent.com/47052106/105615491-7cbc3c80-5e14-11eb-9ba1-d69d54295c5c.JPG)
+
+![2](https://user-images.githubusercontent.com/47052106/105615492-7ded6980-5e14-11eb-994d-6cef6b35476e.JPG)
+
+![3](https://user-images.githubusercontent.com/47052106/105615493-7e860000-5e14-11eb-9349-630044c88899.JPG)
+
+![4](https://user-images.githubusercontent.com/47052106/105615494-7e860000-5e14-11eb-8a95-1bfd3b514891.JPG)
+
+![5](https://user-images.githubusercontent.com/47052106/105615495-7f1e9680-5e14-11eb-9fbf-29a37a59e066.JPG)
+
+![7](https://user-images.githubusercontent.com/47052106/105615496-7f1e9680-5e14-11eb-872e-849cdba45216.JPG)
+
+![8](https://user-images.githubusercontent.com/47052106/105615497-7fb72d00-5e14-11eb-8090-9429590dc661.JPG)
+
+![9](https://user-images.githubusercontent.com/47052106/105615498-7fb72d00-5e14-11eb-9ab7-c5accc6455fa.JPG)
+
