@@ -378,3 +378,36 @@ print(count-1,max_distance)
 ![미래도시](https://user-images.githubusercontent.com/47052106/105701073-1be44f80-5f4d-11eb-82ec-ad54ccc759fc.JPG)
 om/47052106/105698100-c443e500-5f48-11eb-82bd-7a10a85da271.JPG)
 
+- N의 크기가 최대 100이므로 플로이드 워셜 알고리즘을 이용해도 효율적으로 해결
+- 플로이드 워셜 알고리즘을 수행한 뒤에 1번 노드에서 x까지의 최단 거리 + x에서 k까지의 최단거리를 계산하여 출력
+
+```python
+INF = int(1e9)
+
+n,m=map(int,input().split())
+graph=[[INF]*(n+1) for _ in range(n+1)]
+
+for a in range(1,n+1):
+  for b in range(1,n+1):
+    if a==b:
+      graph[a][b]=0
+
+for _ in range(m):
+  c,d=map(int,input().split())
+  graph[c][d]=1
+  graph[d][c]=1
+
+x,k=map(int,input().split())
+
+for k in range(1,n+1):
+  for a in range(1,n+1):
+    for b in range(1,n+1):
+      graph[a][b]=min(graph[a][b],graph[a][k]+graph[k][b])
+      
+distance = graph[1][k]+graph[k][x]
+
+if distance >=INF:
+  print("-1")
+else:
+  print(distance)
+```
